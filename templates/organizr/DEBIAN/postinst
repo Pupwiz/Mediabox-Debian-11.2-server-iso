@@ -1,0 +1,41 @@
+#!/bin/sh
+set -e
+UPDATER=apt
+#!/bin/sh
+
+set -e
+
+test $DEBIAN_SCRIPT_DEBUG && set -v -x
+
+chperms() {
+        # chperms <user> <group> <perms> <file>
+        if ! OVERRIDE=`dpkg-statoverride --list $4 2>&1`; then
+                if [ -e $4 ]; then
+                        chown $1:$2 $4
+                        chmod $3 $4
+                fi
+        fi
+}
+
+case "$1" in
+  configure)
+    if ! getent passwd www-data > /dev/null; then
+        adduser --quiet \
+                --system \
+                --group \
+                --no-create-home \
+                www-data
+    fi
+
+    chperms www-data www-data 4775 /var/www/html 
+
+   # Set permissions on data directory (always do this instead only on creation in case user was changed via dpkg-reconfigure)
+chown -R www-data:www-data /var/www/html
+
+  ;;
+esac
+
+# End automatically added section
+
+
+exit 0

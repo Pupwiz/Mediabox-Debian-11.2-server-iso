@@ -1,0 +1,15 @@
+#IP Watch Config File
+
+sender=New Server install
+sender_email=help@ryzenbox.com
+sender_username=help@ryzenbox.com
+sender_password=@725Procordr
+receiver=Steve
+receiver_email=pupwiz@ryzenbox.com
+subject_line=My IP Has Changed!
+machine=New Plex Server
+smtp_addr=smtp.zoho.com:587
+save_ip_path=/opt/ipwatch/oldip.txt
+try_count=10
+ip_blacklist=192.168.0.255,192.168.0.1,192.168.1.255,192.168.1.1
+

@@ -1,0 +1,19 @@
+[Unit]
+Description=Transmission BitTorrent Daemon
+After=network.target
+## uncomment above an comment out two below if you want to run without vpn
+#After=sys-devices-virtual-net-tun0.device
+#Wants=sys-devices-virtual-net-tun0.device
+[Service]
+#User=debian-transmission
+User=vpn
+Group=vpn
+Type=simple
+ExecStart=/usr/local/bin/transmission-daemon -f --log-info -e /home/vpn/trans.log -g /etc/transmission-daemon
+ExecStop=/bin/kill -s STOP $MAINPID
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+[Install]
+WantedBy=multi-user.target
+

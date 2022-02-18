@@ -1,0 +1,9 @@
+Package: boxtools
+Priority: extra
+Section: media
+Installed-Size: 9963044
+Maintainer: root@fileserver
+Architecture: amd64
+Version: 1.03
+Provides: BoxTools
+Description: Adds Plexupdater Sickbeard_MP4automation Ipwatch Tautulli See README for each in OPT folder.

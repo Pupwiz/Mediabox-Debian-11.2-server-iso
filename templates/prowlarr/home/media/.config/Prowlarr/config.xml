@@ -1,0 +1,16 @@
+<Config>
+  <LogLevel>info</LogLevel>
+  <BindAddress>*</BindAddress>
+  <EnableSsl>False</EnableSsl>
+  <SslCertPath></SslCertPath>
+  <Port>9696</Port>
+  <UrlBase>/prowlarr</UrlBase>
+  <AuthenticationMethod>None</AuthenticationMethod>
+  <LaunchBrowser>True</LaunchBrowser>
+  <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <Branch>develop</Branch>
+  <SslPort>6868</SslPort>
+  <SslCertPassword></SslCertPassword>
+  <UpdateAutomatically>True</UpdateAutomatically>
+  <ApiKey>9370d12171e74c3da24ed81cc904e9f3</ApiKey>
+</Config>

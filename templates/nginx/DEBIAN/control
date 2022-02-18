@@ -1,0 +1,8 @@
+Package: nginx21
+Priority: extra
+Section: checkinstall
+Maintainer: root@fileserver
+Architecture: amd64
+Version: 1.21.5-1
+Provides: nginx21
+Description: Package created with checkinstall 1.6.3

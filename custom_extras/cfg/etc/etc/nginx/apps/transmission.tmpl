@@ -1,0 +1,12 @@
+location /transmission {
+        proxy_pass          http://transmission;
+        proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
+        proxy_redirect      off;
+        proxy_buffering     off;
+        proxy_set_header    Host            $host;
+        proxy_set_header    X-Real-IP       $remote_addr;
+    }
+location /api/v2 {
+        try_files $uri /api/v2/index.php$is_args$args;
+}
+

@@ -1,0 +1,8 @@
+Package: organizr
+Priority: extra
+Section: media
+Maintainer: root@fileserver
+Architecture: amd64
+Version: 1.01 
+Provides: Organizr
+Description: Organizr web index page 

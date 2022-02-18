@@ -1,0 +1,18 @@
+location /btsync {
+        # enable the next two lines for http auth
+        #auth_basic "Restricted";
+        #auth_basic_user_file /config/nginx/.htpasswd;
+
+        # enable the next two lines for ldap auth
+        #auth_request /auth;
+        #error_page 401 =200 /ldaplogin;
+
+        # enable for Authelia
+        #include /config/nginx/authelia-location.conf;
+        resolver 127.0.0.1 valid=30s;
+        set $upstream_app resilio;
+        set $upstream_port 8888;
+        set $upstream_proto http;
+        proxy_pass $upstream_proto://$upstream_app:$upstream_port;
+
+    }

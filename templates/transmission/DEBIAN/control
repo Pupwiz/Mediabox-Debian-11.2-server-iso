@@ -1,0 +1,19 @@
+Package: transmission3.0
+Source: transmission
+Version: 3.00
+Installed-Size: 11986628
+Architecture: amd64
+Maintainer: Pupwiz pupwiz@ryzenbox.com
+Pre-Depends: adduser
+Pre-Depends: adduser
+Depends: lsb-base (>= 3.0), transmission-common (= 3.00-1), libc6 (>= 2.17), libcurl4 (>= 7.18.0), libevent-2.1-7 (>= 2.1.8-stable), libminiupnpc17 (>= 1.9.20140610), libnatpmp1 (>= 20150609), libssl1.1 (>= 1.1.0), libsystemd0, zlib1g (>= 1:1.1.4)
+Section: net
+Priority: optional
+Homepage: https://transmissionbt.com/
+Description: lightweight BitTorrent client (daemon)
+ Transmission is a set of lightweight BitTorrent clients (in GUI, CLI
+ and daemon form). All its incarnations feature a very simple, intuitive
+ interface on top on an efficient, cross-platform back-end.
+ .
+ This package contains the transmission-daemon. For the associated
+ transmission-remote, see the package transmission-cli.

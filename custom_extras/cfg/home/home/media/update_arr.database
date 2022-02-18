@@ -1,0 +1,30 @@
+#!/bin/bash
+ ## Get Keys for Prowlarr 
+sonarrkey=$(awk -F '[<>]' '/ApiKey/{print $3}' /home/media/.config/Sonarr/config.xml)
+echo $sonarrkey
+ radarrkey=$(awk -F '[<>]' '/ApiKey/{print $3}' /home/media/.config/Radarr/config.xml)
+ echo $radarrkey
+  readarrkey=$(awk -F '[<>]' '/ApiKey/{print $3}' /home/media/.config/Readarr/config.xml)
+ echo $readarrkey
+  lidarrkey=$(awk -F '[<>]' '/ApiKey/{print $3}' /home/media/.config/Lidarr/config.xml)
+ echo $lidarrkey
+## Edit SQL file for installed keys
+cat > /opt/prowlarr.sql <<EOF
+DELETE FROM Applications;
+INSERT INTO Applications VALUES(1,'Radarr','Radarr',replace('{\n  "prowlarrUrl": "http://localhost:9696/prowlarr",\n  "baseUrl": "http://localhost:7878/radarr",\n  "apiKey": "$radarrkey",\n  "syncCategories": [\n    2000,\n    2010,\n    2020,\n    2030,\n    2040,\n    2045,\n    2050,\n    2060,\n    2070,\n    2080\n  ]\n}','\n',char(10)),'RadarrSettings',2,'[]');
+INSERT INTO Applications VALUES(2,'Sonarr','Sonarr',replace('{\n  "prowlarrUrl": "http://localhost:9696/prowlarr",\n  "baseUrl": "http://localhost:8989/sonarr",\n  "apiKey": "$sonarrkey",\n  "syncCategories": [\n    5000,\n    5010,\n    5020,\n    5030,\n    5040,\n    5045,\n    5050,\n    5070\n  ],\n  "animeSyncCategories": [\n    5070\n  ]\n}','\n',char(10)),'SonarrSettings',2,'[]');
+INSERT INTO Applications VALUES(3,'Lidarr','Lidarr',replace('{\n  "prowlarrUrl": "http://localhost:9696/prowlarr",\n  "baseUrl": "http://localhost:8686/lidarr",\n  "apiKey": "$lidarrkey",\n  "syncCategories": [\n    3000,\n    3010,\n    3030,\n    3040,\n    3050,\n    3060\n  ]\n}','\n',char(10)),'LidarrSettings',2,'[]');
+INSERT INTO Applications VALUES(4,'Readarr','Readarr',replace('{\n  "prowlarrUrl": "http://localhost:9696/prowlarr",\n  "baseUrl": "http://localhost:5757/readarr",\n  "apiKey": "$readarrkey",\n  "syncCategories": [\n    3030,\n    7000,\n    7010,\n    7020,\n    7030,\n    7040,\n    7050,\n    7060\n  ]\n}','\n',char(10)),'ReadarrSettings',2,'[]');
+DELETE FROM DownloadClients;
+INSERT INTO DownloadClients VALUES(1,1,'Transmission','Transmission',replace('{\n  "host": "localhost",\n  "port": 9091,\n  "useSsl": false,\n  "urlBase": "/transmission/",\n  "priority": 0,\n  "addPaused": false\n}','\n',char(10)),'TransmissionSettings',1);
+EOF
+## Load configs into  prowlarr DB
+cat /opt/prowlarr.sql | sqlite3 /home/media/.config/Prowlarr/prowlarr.db
+echo "Prowlarr database updates completed..!"  | wall -n
+##Cleanup 
+rm /opt/prowlarr.sql
+## Grab key form config file
+## Use api to resart Sonarr 
+#curl --data "{apikey:$sonarrkey}" http://localhost:8989/sonarr/api/system/restart?apikey=$sonarrkey
+rm -- "$0"
+exit 0
