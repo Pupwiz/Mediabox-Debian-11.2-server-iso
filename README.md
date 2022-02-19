@@ -5,8 +5,10 @@ In an effort to simplify installs and have the end user able to reinstall the OS
 has evolved. 
 This scripts are designed to setup a home media server built on Debian. What is installed are as follows.
 1. Plexmediaserver https://www.plex.tv/en-ca/
-2. Sonarr, Radarr, Lidarr, Readarr https://wiki.servarr.com/
-3. cloudcmd http://cloudcmd.io/
+2. Sonarr, Radarr, Lidarr, Readarr, Prowlarr
+https://wiki.servarr.com/
+3. cloudcmd 
+http://cloudcmd.io/
 4. Transmission running in namespace with socat and openvpn
 
 Credits:
