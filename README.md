@@ -9,6 +9,9 @@ This scripts are designed to setup a home media server built on Debian. What is 
 3. cloudcmd http://cloudcmd.io/
 4. Transmission running in namespace with socat and openvpn
 
+Credits:
+
+
 https://github.com/slingamn/namespaced-openvpn
 
 https://github.com/mdhiggins/sickbeard_mp4_automator.git
@@ -20,3 +23,5 @@ https://github.com/mrworf/plexupdate.git
 https://github.com/christgau/wsdd.git
 
 https://github.com/Jorman/Scripts
+
+https://github.com/nikolay-turpitko/my-debian
