@@ -1,6 +1,6 @@
 #!/bin/bash
 DIR=$(pwd)
-sonarr=3.0.6.1457
+sonarr=3.0.6.1460
 #rm $DIR/local_packages/sonarr*.deb
 #lastsonarr() { git ls-remote --tags "$1" | cut -d/ -f3- | tail -n1; }
 #sonarr=$(lastsonarr https://github.com/sonarr/sonarr.git)
