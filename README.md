@@ -8,9 +8,15 @@ This scripts are designed to setup a home media server built on Debian. What is 
 2. Sonarr, Radarr, Lidarr, Readarr https://wiki.servarr.com/
 3. cloudcmd http://cloudcmd.io/
 4. Transmission running in namespace with socat and openvpn
+
 https://github.com/slingamn/namespaced-openvpn
-https://github.com/mdhiggins/sickbeard_mp4_automator.git mp4auto 
+
+https://github.com/mdhiggins/sickbeard_mp4_automator.git
+
 https://github.com/begleysm/ipwatch.git 
+
 https://github.com/mrworf/plexupdate.git 
+
 https://github.com/christgau/wsdd.git
-https://github.com/Pupwiz/Scripts.git bt_scripts
+
+https://github.com/Jorman/Scripts
