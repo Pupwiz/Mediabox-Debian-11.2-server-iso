@@ -2,12 +2,11 @@
 DIR=$(pwd)
 rm $DIR/local_packages/radarr*.deb
 mkdir -p $DIR/radarr_amd64/opt
-#wget https://github.com/radarr/radarr/releases/download/$radarr/radarr.master.${radarr:1}.linux-core-x64.tar.gz
-#wget --content-disposition 'https://radarr.servarr.com/v1/update/master/updatefile?os=linux&runtime=netcore&arch=x64'
-wget https://github.com/Radarr/Radarr/releases/download/v4.0.4.5909/Radarr.develop.4.0.4.5909.linux-core-x64.tar.gz
-tar xfz Radarr.develop.*.linux-core-x64.tar.gz -C $DIR/radarr_amd64/opt
+radarr=$(git ls-remote --tags https://github.com/Radarr/Radarr | sed -nE 's#.*refs/tags/(v?[0-9]+(\.[0-9]+)*)$#\1#p' | sort -Vr | head -n 1)
+wget https://github.com/Radarr/Radarr/releases/download/$radarr/Radarr.master.${radarr:1}.linux-core-x64.tar.gz
+tar xfz Radarr.master.*.linux-core-x64.tar.gz -C $DIR/radarr_amd64/opt
 VER=$(find ./Radarr*  -name '*.tar.gz'|grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
-rm Radarr.develop.*.linux-core-x64.tar.gz
+rm Radarr.master.*.linux-core-x64.tar.gz
 cp $DIR/templates/radarr/. $DIR/radarr_amd64/ -r
 sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: $VER/" $DIR/radarr_amd64/DEBIAN/control
 chown -R media: $DIR/radarr_amd64/home $DIR/radarr_amd64/opt
